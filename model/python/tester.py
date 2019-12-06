@@ -12,9 +12,9 @@ my_aes = aes.AES()
 
 # input the 128bit of block and key, then run the script.
 # the last line will be the result
-block_key = 0x2b7e151628aed2a6abf7158809cf4f3c
-block_text = 0x6bc1bee22e409f96e93d7e117393172a
-
+block_key = 0x51d0856638566c23c7c8113acc9711a9
+block_text = 0x3c163add545c3aad3b8253efab2c9297
+# a8b06bd6b8798ae69e9c0b4a719ee7af
 
 # key = (0x00010203, 0x04050607, 0x08090A0B, 0x0C0D0E0F)
 # text = (0x01234567, 0x89876543, 0x21012345, 0x67898765)
