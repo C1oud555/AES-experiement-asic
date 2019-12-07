@@ -29,10 +29,10 @@ task automatic datarecieve(const ref reg [7: 0] result, const ref reg done, ref 
         @(posedge clk);
         data_recv = {data_recv[120: 0], result};
     end
-    $display("data_recv: %h", data_recv);
+    $display("data_recv: %h\n", data_recv);
 endtask //datarecieve
 
-parameter T = 'd20;
+parameter T = 'd20, interval = 2; //每隔两个时钟送一次数据
 
 reg clk, rst_n, en, test;
 reg [127: 0] text_in, data_recv;
@@ -51,13 +51,18 @@ initial begin
     test = 0;
     # (3*T) rst_n = 'b1;
     trans.randomize();
-    text_in = trans.text_in;
+    datatrans(trans.text_in, trans.key_in, clk, en, block, key);
+    # (interval*T) trans.randomize();
+    datatrans(trans.text_in, trans.key_in, clk, en, block, key);
+    # (interval*T) trans.randomize();
+    datatrans(trans.text_in, trans.key_in, clk, en, block, key);
+    # (interval*T) trans.randomize();
     datatrans(trans.text_in, trans.key_in, clk, en, block, key);
 end
 
 initial fork
     
-    # (100 * T) $finish();
+    # (500 * T) $finish();
 join
 
 always @(posedge done) fork
