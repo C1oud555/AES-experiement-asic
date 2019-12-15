@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import aes
 
 def conv_128to4w(text):
@@ -28,7 +29,15 @@ block_key4 = 0x12bc7a427cf169be5bf920c475ceb9ed
 block_text4 = 0xb78a114061bda1b670e985c4e4cf22c9
 # ans4 : 0cd459f6, 0x7505547e, 0xbbbe8c27, 0xb1fa4a12
 
+block_key5 = 0x6e7454889b9a105fde845f89d80eabb0
+block_text5 = 0x295752264934494cc0a13594e40d772e
+# ans5 : 
+
 # key = (0x00010203, 0x04050607, 0x08090A0B, 0x0C0D0E0F)
 # text = (0x01234567, 0x89876543, 0x21012345, 0x67898765)
 
-my_aes.aes_encipher_block(conv_128to4w(block_key4), conv_128to4w(block_text4))
+enc_out= my_aes.aes_encipher_block(conv_128to4w(block_key5), conv_128to4w(block_text5))
+my_aes.print_block(enc_out)
+
+# dec_out= my_aes.aes_decipher_block(conv_128to4w(block_key2), conv_128to4w(block_text2))
+# my_aes.print_block(dec_out)
